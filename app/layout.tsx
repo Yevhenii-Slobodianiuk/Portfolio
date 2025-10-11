@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/reset.css";
 import "./globals.css";
+import SmoothScrollProvider from "./components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }
