@@ -54,5 +54,27 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #212121;
   font-family: var(--font-uncut-sans);
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .col-center {
+    @apply flex flex-col justify-center items-center;
+  }
+  .abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+}
+
+@layer components {
+	main {
+    @apply w-dvw overflow-x-hidden;
+  }
+	.hero {
+		@apply w-full h-dvh
+	}
 }

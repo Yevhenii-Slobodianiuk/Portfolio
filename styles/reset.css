@@ -9,6 +9,19 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+}
+
+/* Padding прибираємо лише для блоків типу body, ul, ol, h1-h6 */
+body,
+ul,
+ol,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   padding: 0;
 }
 
@@ -39,19 +52,6 @@ svg {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-/* 6. Форматування кнопок і форм */
-button,
-input,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: none;
-  outline: none;
-  appearance: none;
 }
 
 /* 7. Прибираємо нативні стрілки у числових інпутах */

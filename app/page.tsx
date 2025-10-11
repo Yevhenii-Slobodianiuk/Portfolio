@@ -1,11 +1,12 @@
-import SnowBackground from "./components/SnowBackground";
+// import SnowBackground from "./components/SnowBackground";
+import Hero from "./sections/Hero";
 
 export default function Home() {
   return (
     <main>
-      <p className="font-bold text-[200px]">hello bitch</p>
+      <Hero />
 
-      <SnowBackground />
+      {/* <SnowBackground /> */}
     </main>
   );
 }
