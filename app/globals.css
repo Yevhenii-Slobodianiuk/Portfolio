@@ -65,7 +65,14 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #212121;
+  /* background: #212121; */
+  background: #787457;
+  background: linear-gradient(
+    90deg,
+    rgba(120, 116, 87, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(120, 116, 87, 1) 100%
+  );
   overflow-x: hidden;
   font-family: var(--font-uncut-sans);
   scrollbar-width: none;
@@ -93,6 +100,19 @@ body::-webkit-scrollbar {
     @apply overflow-x-hidden;
   }
   .hero {
-    @apply w-full h-dvh;
+    @apply w-full h-dvh relative;
   }
+}
+
+.mask-wrapper {
+  /* маска через картинку */
+  -webkit-mask-image: url("/images/portfolio.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-image: url("/images/portfolio.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
 }

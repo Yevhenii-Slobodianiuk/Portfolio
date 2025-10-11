@@ -1,10 +1,39 @@
-// import AnimatedArrow from "../components/AnimatedArrow";
+"use client";
+
+import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import AsciiHead from "../components/AsciiHead";
 import Container from "../components/Container";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Hero = () => {
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "+=200%",
+        scrub: 2,
+        pin: true,
+      },
+    });
+
+    tl.to(".portfolio-img", { opacity: 0, ease: "power1.inOut" }).to(
+      ".mask-wrapper",
+      {
+        maskSize: "3000% 3000%",
+        duration: 3,
+        ease: "power1.inOut",
+      }
+    );
+  });
+
   return (
-    <section className="flex-center hero">
+    <section className="relative flex-center bg-[#212121] hero mask-wrapper">
       <Container className="flex flex-col justify-center items-center gap-5 md:gap-0">
         <div className="flex flex-col w-fit">
           <div className="flex md:flex-row flex-col items-center gap-5">
@@ -13,7 +42,7 @@ const Hero = () => {
               <h1 className="font-semibold text-[clamp(1.5rem,5vw,4rem)]">
                 YEVHENII SLOBODIANIUK
               </h1>
-              <p className="text-[clamp(1rem,2vw,1.5rem)] text-center md:text-start">
+              <p className="opacity-70 text-[clamp(1rem,2vw,1.5rem)] text-center md:text-start">
                 BASED IN BREMEN, GERMANY
               </p>
             </div>
@@ -27,13 +56,22 @@ const Hero = () => {
             <p className="font-bold text-[clamp(3rem,10vw,10rem)] uppercase">
               developer
             </p>
-            <button className="block hover:bg-white hover:opacity-70 px-4 py-2 border border-amber-50 rounded-xl hover:text-[#171717] transition duration-300">
+            <button className="block bg-white hover:bg-transparent px-4 py-2 border border-amber-50 rounded-xl text-[#171717] hover:text-white transition duration-300">
               contact me
             </button>
           </div>
         </div>
-        {/* <AnimatedArrow /> */}
       </Container>
+
+      <div className="top-0 left-0 absolute flex-center w-full h-dvh">
+        <Image
+          src="/images/portfolio.svg"
+          alt="portfolio image"
+          width={730}
+          height={155}
+          className="portfolio-img"
+        />
+      </div>
     </section>
   );
 };
