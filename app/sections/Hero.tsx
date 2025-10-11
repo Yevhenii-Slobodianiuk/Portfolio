@@ -1,17 +1,24 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import AsciiHead from "../components/AsciiHead";
 import Container from "../components/Container";
+import { useMaskSettings } from "../../constants/index.ts";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const { initialMaskPos, initialMaskSize, maskSize } = useMaskSettings();
+
   useGSAP(() => {
+    gsap.set(".mask-wrapper", {
+      maskPosition: initialMaskPos,
+      maskSize: initialMaskSize,
+    });
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".hero",
@@ -22,14 +29,11 @@ const Hero = () => {
       },
     });
 
-    tl.to(".portfolio-img", { opacity: 0, ease: "power1.inOut" }).to(
-      ".mask-wrapper",
-      {
-        maskSize: "3000% 3000%",
-        duration: 3,
-        ease: "power1.inOut",
-      }
-    );
+    tl.to(".mask-wrapper", {
+      maskSize: maskSize,
+      duration: 2,
+      ease: "power1.inOut",
+    });
   });
 
   return (
@@ -42,7 +46,7 @@ const Hero = () => {
               <h1 className="font-semibold text-[clamp(1.5rem,5vw,4rem)]">
                 YEVHENII SLOBODIANIUK
               </h1>
-              <p className="opacity-70 text-[clamp(1rem,2vw,1.5rem)] text-center md:text-start">
+              <p className="opacity-70 text-[clamp(1rem,2vw,1rem)] text-center md:text-start">
                 BASED IN BREMEN, GERMANY
               </p>
             </div>
@@ -62,16 +66,6 @@ const Hero = () => {
           </div>
         </div>
       </Container>
-
-      <div className="top-0 left-0 absolute flex-center w-full h-dvh">
-        <Image
-          src="/images/portfolio.svg"
-          alt="portfolio image"
-          width={730}
-          height={155}
-          className="portfolio-img"
-        />
-      </div>
     </section>
   );
 };

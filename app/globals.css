@@ -108,11 +108,7 @@ body::-webkit-scrollbar {
   /* маска через картинку */
   -webkit-mask-image: url("/images/portfolio.svg");
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
 
   mask-image: url("/images/portfolio.svg");
   mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
 }
