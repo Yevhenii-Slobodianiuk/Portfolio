@@ -1,0 +1,109 @@
+/* ------------------------------
+   Tailwind-compatible Reset
+   Author: Yevhenii Slobodianiuk (2025)
+------------------------------ */
+
+/* 1. Базове скидання для всіх елементів */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Точне позиціонування тексту по висоті */
+* {
+  line-height: 1;
+  vertical-align: baseline;
+}
+
+/* 3. Забрати дефолтний стиль списків */
+ol,
+ul {
+  list-style: none;
+}
+
+/* 4. Зображення та медіа ведуть себе як блочні елементи */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 5. Посилання без підкреслення */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 6. Форматування кнопок і форм */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+/* 7. Прибираємо нативні стрілки у числових інпутах */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* 8. Забираємо лінії фокусу, Tailwind додає власні */
+:focus {
+  outline: none;
+}
+
+/* 9. Робимо текст максимально чітким */
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 10. Гарантована нульова висота додаткових рядків */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  line-height: 1;
+}
+
+/* 11. Гарантовано стабільна висота рядка у flex/grid */
+button,
+input,
+label {
+  line-height: 1;
+}
+
+/* 12. Для Tailwind dark mode */
+:root {
+  color-scheme: light dark;
+}
+
+/* 13. Уніфікований курсор */
+button {
+  cursor: pointer;
+}
+
+/* 14. Забираємо висоту scroll bar’у при приховуванні */
+html {
+  scrollbar-gutter: stable;
+}

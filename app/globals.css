@@ -1,8 +1,39 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "UncutSans";
+  src: url("/fonts/UncutSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UncutSans";
+  src: url("/fonts/UncutSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UncutSans";
+  src: url("/fonts/UncutSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UncutSans";
+  src: url("/fonts/UncutSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-uncut-sans: "UncutSans", system-ui, sans-serif;
 }
 
 @theme inline {
@@ -20,7 +51,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-uncut-sans);
 }
