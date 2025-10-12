@@ -37,7 +37,7 @@ const Hero = () => {
   });
 
   return (
-    <section className="relative flex-center bg-[#212121] hero mask-wrapper">
+    <section className="relative flex-center bg-[#2E2F39] hero mask-wrapper">
       <Container className="flex flex-col justify-center items-center gap-5 md:gap-0">
         <div className="flex flex-col w-fit">
           <div className="flex md:flex-row flex-col items-center gap-5">
@@ -53,7 +53,7 @@ const Hero = () => {
           </div>
         </div>
         <div>
-          <p className="font-bold text-[clamp(3rem,10vw,10rem)] text-center uppercase">
+          <p className="font-bold text-[#F9E84E] text-[clamp(3rem,10vw,10rem)] text-center uppercase">
             frontend
           </p>
           <div className="flex md:flex-row flex-col justify-between items-center gap-4">
