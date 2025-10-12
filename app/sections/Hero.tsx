@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import AsciiHead from "../components/AsciiHead";
 import Container from "../components/Container";
-import { useMaskSettings } from "../../constants/index.ts";
+import { useMaskSettings } from "../../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
