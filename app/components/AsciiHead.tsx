@@ -4,14 +4,12 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { AsciiEffect } from "three/addons/effects/AsciiEffect.js";
-import { TrackballControls } from "three/addons/controls/TrackballControls.js";
 
 export default function AsciiHead() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let camera: THREE.PerspectiveCamera;
-    let controls: TrackballControls;
     let scene: THREE.Scene;
     let renderer: THREE.WebGLRenderer;
     let effect: AsciiEffect;
@@ -31,7 +29,6 @@ export default function AsciiHead() {
       camera.position.set(0, 0, 3);
 
       scene = new THREE.Scene();
-      // scene.background = new THREE.Color(0x000000);
 
       // Освітлення
       const light1 = new THREE.PointLight(0xffffff, 2);
@@ -44,7 +41,6 @@ export default function AsciiHead() {
       // Завантаження GLTF/GLB
       const loader = new GLTFLoader();
       loader.load(
-        // ⚠️ Шлях до моделі (приклад: /models/robot.glb)
         "/3d/head.glb",
         (gltf) => {
           model = gltf.scene;
@@ -64,20 +60,11 @@ export default function AsciiHead() {
       renderer.setSize(width, height);
 
       // ASCII ефект
-      //  .:-+*=%@#
       effect = new AsciiEffect(renderer, " .▀-+*=%@#", { invert: true });
       effect.setSize(width, height);
       effect.domElement.style.color = "white";
       effect.domElement.style.backgroundColor = "transparent";
       container.appendChild(effect.domElement);
-
-      // Контроли
-      controls = new TrackballControls(camera, effect.domElement);
-      controls.rotateSpeed = 3.0;
-      controls.zoomSpeed = 1.2;
-      controls.panSpeed = 0.8;
-
-      controls.noZoom = true; // або controls.enableZoom = false;
 
       window.addEventListener("resize", onWindowResize);
     }
@@ -101,7 +88,6 @@ export default function AsciiHead() {
         model.rotation.y = t * 1;
       }
 
-      controls.update();
       effect.render(scene, camera);
     }
 

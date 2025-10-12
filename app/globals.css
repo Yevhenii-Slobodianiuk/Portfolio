@@ -66,6 +66,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   /* background: #212121; */
+  color: white;
   background: #787457;
   background: linear-gradient(
     90deg,
