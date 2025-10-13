@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* -------------------- RESET -------------------- */
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
 @font-face {
   font-family: "UncutSans";
   src: url("/fonts/UncutSans-Regular.woff2") format("woff2");
@@ -101,7 +111,7 @@ body::-webkit-scrollbar {
     @apply overflow-x-hidden;
   }
   .hero {
-    @apply w-full h-dvh relative;
+    @apply w-full h-dvh;
   }
 }
 

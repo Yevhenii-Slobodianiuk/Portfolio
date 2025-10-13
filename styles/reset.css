@@ -3,14 +3,6 @@
    Author: Yevhenii Slobodianiuk (2025)
 ------------------------------ */
 
-/* 1. Базове скидання для всіх елементів */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
 /* Padding прибираємо лише для блоків типу body, ul, ol, h1-h6 */
 body,
 ul,
