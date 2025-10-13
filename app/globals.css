@@ -1,7 +1,5 @@
 @import "tailwindcss";
-
 /* -------------------- RESET -------------------- */
-
 @layer base {
   * {
     margin: 0;
@@ -60,13 +58,11 @@
   }
 }
 
-/* Для всіх браузерів */
 html {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Chrome, Safari, Edge */
 body::-webkit-scrollbar {
   display: none;
 }
@@ -75,7 +71,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background: #212121; */
   color: white;
   background: #787457;
   background: linear-gradient(
@@ -91,7 +86,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
 }
 
 @layer utilities {
@@ -116,7 +111,6 @@ body::-webkit-scrollbar {
 }
 
 .mask-wrapper {
-  /* маска через картинку */
   -webkit-mask-image: url("/images/portfolio.svg");
   -webkit-mask-repeat: no-repeat;
 
