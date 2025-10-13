@@ -105,7 +105,8 @@ const Projects = () => {
       scrollTrigger: {
         trigger: container,
         start: "top top",
-        end: "bottom center",
+        // end: "bottom center",
+        end: "bottom 85%",
         scrub: 1,
         onUpdate: () => {
           const centerY =

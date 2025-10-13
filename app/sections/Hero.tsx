@@ -60,9 +60,12 @@ const Hero = () => {
             <p className="font-bold text-[clamp(3rem,10vw,10rem)] uppercase">
               developer
             </p>
-            <button className="block bg-white hover:bg-transparent px-4 py-2 border border-amber-50 rounded-xl text-[#171717] hover:text-white transition duration-300">
-              contact me
-            </button>
+            <a
+              href="#contact"
+              className="block bg-white hover:bg-transparent px-4 py-2 border border-amber-50 hover:border-[#F9E84E] rounded-xl text-[#212121] hover:text-white transition duration-300"
+            >
+              <p>contact me</p>
+            </a>
           </div>
         </div>
       </Container>

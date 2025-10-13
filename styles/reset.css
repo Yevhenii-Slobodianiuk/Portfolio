@@ -41,10 +41,9 @@ svg {
 }
 
 /* 5. Посилання без підкреслення */
-a {
+/* a {
   text-decoration: none;
-  color: inherit;
-}
+} */
 
 /* 7. Прибираємо нативні стрілки у числових інпутах */
 input[type="number"]::-webkit-inner-spin-button,
