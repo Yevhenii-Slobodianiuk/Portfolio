@@ -171,7 +171,7 @@ const Projects = () => {
   return (
     <section className="bg-[#2E2F39] py-[100px] w-full h-full">
       <Container>
-        <h2 className="mb-[100px] font-semibold text-[64px] text-center uppercase">
+        <h2 className="mb-[100px] font-semibold text-[clamp(3rem,8vw,8rem)] text-center uppercase">
           projects
         </h2>
 
@@ -187,10 +187,6 @@ const Projects = () => {
               0{activeIndex}
             </span>
           </div>
-
-          {/* <p className="bottom-5 left-5 z-50 fixed text-white text-lg">
-            Active Project: {activeIndex}
-          </p> */}
 
           <div
             ref={cursorRef}

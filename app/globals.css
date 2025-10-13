@@ -72,13 +72,19 @@ body {
   padding: 0;
   box-sizing: border-box;
   color: white;
-  background: #787457;
+  background: #212121;
   background: linear-gradient(
+    90deg,
+    rgba(33, 33, 33, 1) 18%,
+    rgba(87, 199, 133, 1) 48%,
+    rgba(33, 33, 33, 1) 85%
+  );
+  /* background: linear-gradient(
     90deg,
     rgba(120, 116, 87, 1) 0%,
     rgba(87, 199, 133, 1) 50%,
     rgba(120, 116, 87, 1) 100%
-  );
+  ); */
   overflow-x: hidden;
   font-family: var(--font-uncut-sans);
   scrollbar-width: none;
