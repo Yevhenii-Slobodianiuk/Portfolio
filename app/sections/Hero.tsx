@@ -62,6 +62,10 @@ const Hero = () => {
             </p>
             <a
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                (window as any).lenis?.scrollTo("#contact");
+              }}
               className="block bg-white hover:bg-transparent px-4 py-2 border border-amber-50 hover:border-[#F9E84E] rounded-xl text-[#212121] hover:text-white transition duration-300"
             >
               <p>contact me</p>
