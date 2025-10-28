@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.2",
     "@react-three/fiber": "^9.3.0",
     "@types/three": "^0.180.0",
