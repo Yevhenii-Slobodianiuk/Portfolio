@@ -1,6 +1,6 @@
 "use client";
 
-// import Image from "next/image";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -46,9 +46,43 @@ const Hero = () => {
               <h1 className="font-semibold text-[clamp(1.5rem,5vw,4rem)]">
                 YEVHENII SLOBODIANIUK
               </h1>
-              <p className="opacity-70 text-[clamp(1rem,2vw,1rem)] text-center md:text-start">
-                BASED IN BREMEN, GERMANY
-              </p>
+              <div className="flex items-center gap-2">
+                <p className="opacity-70 text-[clamp(1rem,2vw,1rem)] text-center md:text-start">
+                  BASED IN BREMEN, GERMANY
+                </p>
+                <Image
+                  src="/images/pin.svg"
+                  alt="Location icon"
+                  width={20}
+                  height={10}
+                />
+              </div>
+              <div className="flex gap-2">
+                <a
+                  href="https://github.com/Yevhenii-Slobodianiuk"
+                  target="_blank"
+                  className="social-link"
+                >
+                  <Image
+                    src="/images/github.svg"
+                    alt="Location icon"
+                    width={20}
+                    height={10}
+                  />
+                </a>
+                <a
+                  href="https://github.com/Yevhenii-Slobodianiuk"
+                  target="_blank"
+                  className="social-link"
+                >
+                  <Image
+                    src="/images/linkedin.svg"
+                    alt="Location icon"
+                    width={20}
+                    height={10}
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
