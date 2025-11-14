@@ -98,6 +98,7 @@ const Hero = () => {
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (window as any).lenis?.scrollTo("#contact");
               }}
               className="block bg-white hover:bg-transparent px-4 py-2 border border-amber-50 hover:border-[#F9E84E] rounded-xl text-[#212121] hover:text-white transition duration-300"

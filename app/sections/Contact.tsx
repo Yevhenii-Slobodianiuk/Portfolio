@@ -41,10 +41,13 @@ const Contact = () => {
         setMessageType("error");
       }
     } catch (error) {
-      setMessage(
-        "Connection error. Check your internet connection and try again."
-      );
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Connection error. Check your internet connection and try again.";
+      setMessage(errorMessage);
       setMessageType("error");
+      console.error("Contact form error:", error);
     } finally {
       setIsLoading(false);
     }
