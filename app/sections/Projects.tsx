@@ -60,29 +60,29 @@ const projects = [
       },
     ],
   },
-  {
-    id: 3,
-    imageSrc: "/images/project-images/immersive-people.webp",
-    link: "https://immersive-people.netlify.app/",
-    technologies: [
-      {
-        name: "Next",
-        iconSrc: "/tech-icons/next.js.svg",
-      },
-      {
-        name: "TypeScript",
-        iconSrc: "/tech-icons/typescript.svg",
-      },
-      {
-        name: "GSAP",
-        iconSrc: "/tech-icons/gsap.svg",
-      },
-      {
-        name: "VS Code",
-        iconSrc: "/tech-icons/visualstudio.svg",
-      },
-    ],
-  },
+  // {
+  //   id: 3,
+  //   imageSrc: "/images/project-images/immersive-people.webp",
+  //   link: "https://immersive-people.netlify.app/",
+  //   technologies: [
+  //     {
+  //       name: "Next",
+  //       iconSrc: "/tech-icons/next.js.svg",
+  //     },
+  //     {
+  //       name: "TypeScript",
+  //       iconSrc: "/tech-icons/typescript.svg",
+  //     },
+  //     {
+  //       name: "GSAP",
+  //       iconSrc: "/tech-icons/gsap.svg",
+  //     },
+  //     {
+  //       name: "VS Code",
+  //       iconSrc: "/tech-icons/visualstudio.svg",
+  //     },
+  //   ],
+  // },
 ];
 
 const Projects = () => {
