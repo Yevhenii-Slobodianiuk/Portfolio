@@ -48,7 +48,7 @@ const Hero = () => {
               </h1>
               <div className="flex items-center gap-2">
                 <p className="opacity-70 text-[clamp(1rem,2vw,1rem)] text-center md:text-start">
-                  BASED IN BREMEN, GERMANY
+                  BASED IN GERMANY
                 </p>
                 <Image
                   src="/images/pin.svg"
