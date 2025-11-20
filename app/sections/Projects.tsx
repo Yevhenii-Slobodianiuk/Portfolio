@@ -99,15 +99,15 @@ const Projects = () => {
 
     if (!container || !movingNumber || projects.length === 0) return;
 
-    gsap.to(movingNumber, {
+    const anim = gsap.to(movingNumber, {
       y: () => container.clientHeight - movingNumber.clientHeight,
       ease: "none",
       scrollTrigger: {
         trigger: container,
         start: "top top",
-        // end: "bottom center",
         end: "bottom 85%",
         scrub: 1,
+        invalidateOnRefresh: true,
         onUpdate: () => {
           const centerY =
             movingNumber.getBoundingClientRect().top +
@@ -122,6 +122,18 @@ const Projects = () => {
         },
       },
     });
+
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      anim.scrollTrigger?.kill();
+      anim.kill();
+    };
   }, []);
 
   useGSAP(() => {
