@@ -71,7 +71,7 @@ const Hero = () => {
                   />
                 </a>
                 <a
-                  href="https://github.com/Yevhenii-Slobodianiuk"
+                  href="https://www.linkedin.com/in/yevhenii-s-7821a5263/"
                   target="_blank"
                   className="social-link"
                 >
