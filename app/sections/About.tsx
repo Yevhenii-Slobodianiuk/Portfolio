@@ -48,7 +48,7 @@ const About = () => {
   return (
     <section className="flex-center bg-[#2E2F39] w-full h-dvh">
       <Container className="flex flex-col gap-10">
-        <p className="text-[clamp(1.5rem,5vw,4rem)]">
+        <p className="text-[clamp(1.5rem,5vw,4rem)] whitespace-pre-line">
           {headingText.split("").map((char, i) => (
             <span
               ref={(el) => {

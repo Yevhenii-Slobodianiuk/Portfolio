@@ -14,8 +14,6 @@ export default function Home() {
       <About />
       <Projects />
       <Contact />
-      {/* <div className="h-dvh"></div> */}
-
       <VerticalScrollbar />
       <SnowBackground />
     </main>
