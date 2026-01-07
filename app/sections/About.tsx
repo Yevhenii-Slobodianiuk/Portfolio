@@ -49,15 +49,21 @@ const About = () => {
     <section className="flex-center bg-[#2E2F39] w-full h-dvh">
       <Container className="flex flex-col gap-10">
         <p className="text-[clamp(1.5rem,5vw,4rem)] whitespace-pre-line">
-          {headingText.split("").map((char, i) => (
-            <span
-              ref={(el) => {
-                if (el) headingCharsRef.current[i] = el;
-              }}
-              key={i}
-              className="inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
+          {headingText.split(" ").map((word, wordIndex) => (
+            <span key={wordIndex} className="inline-block whitespace-nowrap">
+              {word.split("").map((char, charIndex) => (
+                <span
+                  key={charIndex}
+                  ref={(el) => {
+                    if (el) headingCharsRef.current.push(el);
+                  }}
+                  className="inline-block"
+                >
+                  {char}
+                </span>
+              ))}
+              {/* пробіл між словами */}
+              <span className="inline-block">&nbsp;</span>
             </span>
           ))}
         </p>
