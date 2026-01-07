@@ -62,7 +62,6 @@ const About = () => {
                   {char}
                 </span>
               ))}
-              {/* пробіл між словами */}
               <span className="inline-block">&nbsp;</span>
             </span>
           ))}
@@ -75,14 +74,23 @@ const About = () => {
             <p className="font-semibold text-[clamp(1.5rem,5vw,4rem)] text-center fade-in">
               Hi, I`m Yevhenii
             </p>
-            <p className="max-w-[600px] md:max-w-[500px] text-[clamp(1rem,1.5vw,1.5rem)] fade-in">
-              I`m a frontend developer who values clean code and meaningful
+            <p className="md:max-w-[600px] xl:max-w-[700px] text-[clamp(1rem,1.5vw,1.5rem)] fade-in">
+              {/* I`m a frontend developer who values clean code and meaningful
               design. I like building things that work well and make sense.
               <br /> I love turning ideas into small, thoughtful details on the
               web. My goal is simple — make digital things a bit nicer to use.
               And I focused on creating efficient and user-friendly web
               applications. I enjoy translating complex ideas into simple,
-              functional solutions that just work.
+              functional solutions that just work.  */}
+              React Software Developer with 2+ years of experience building
+              responsive, high-performance web applications in the digital media
+              and e-commerce domains. Improved page load speed on an online
+              blogging platform by about 30% through client-side performance
+              optimization, lazy loading, and reducing unnecessary re-renders.
+              Experienced with React, TypeScript, Redux Toolkit, and Tailwind
+              CSS, with a strong focus on clean architecture, performance
+              optimization, and delivering production-ready user interfaces in
+              Agile team environments.
             </p>
           </div>
         </div>
