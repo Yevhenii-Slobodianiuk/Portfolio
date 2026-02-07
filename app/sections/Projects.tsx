@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -8,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import Container from "../components/Container";
 
 gsap.registerPlugin(ScrollTrigger);
+type Range = { top: number; bottom: number; index: number };
 
 const projects = [
   {
@@ -60,29 +62,6 @@ const projects = [
       },
     ],
   },
-  // {
-  //   id: 3,
-  //   imageSrc: "/images/project-images/immersive-people.webp",
-  //   link: "https://immersive-people.netlify.app/",
-  //   technologies: [
-  //     {
-  //       name: "Next",
-  //       iconSrc: "/tech-icons/next.js.svg",
-  //     },
-  //     {
-  //       name: "TypeScript",
-  //       iconSrc: "/tech-icons/typescript.svg",
-  //     },
-  //     {
-  //       name: "GSAP",
-  //       iconSrc: "/tech-icons/gsap.svg",
-  //     },
-  //     {
-  //       name: "VS Code",
-  //       iconSrc: "/tech-icons/visualstudio.svg",
-  //     },
-  //   ],
-  // },
 ];
 
 const Projects = () => {
@@ -92,61 +71,103 @@ const Projects = () => {
   const [activeIndex, setActiveIndex] = useState<number>(1);
   const [hovered, setHovered] = useState<boolean>(false);
 
-  useGSAP(() => {
-    const container = projectsContainerRef.current;
-    const movingNumber = movingNumberRef.current;
-    const projects = gsap.utils.toArray<HTMLDivElement>(".project");
+  useGSAP(
+    () => {
+      const container = projectsContainerRef.current;
+      const movingNumber = movingNumberRef.current;
+      if (!container || !movingNumber) return;
 
-    if (!container || !movingNumber || projects.length === 0) return;
+      const projectEls = gsap.utils.toArray<HTMLDivElement>(".project");
+      if (!projectEls.length) return;
 
-    const anim = gsap.to(movingNumber, {
-      y: () => container.clientHeight - movingNumber.clientHeight,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: "bottom 85%",
-        scrub: 1,
-        invalidateOnRefresh: true,
-        onUpdate: () => {
-          const centerY =
-            movingNumber.getBoundingClientRect().top +
-            movingNumber.clientHeight / 2;
+      let ranges: Range[] = [];
+      let maxY = 0;
+      let numH = 0;
 
-          projects.forEach((project, i) => {
-            const rect = project.getBoundingClientRect();
-            if (centerY >= rect.top && centerY <= rect.bottom) {
-              setActiveIndex(i + 1);
+      const compute = () => {
+        maxY = container.clientHeight - movingNumber.clientHeight;
+        if (maxY < 0) maxY = 0;
+
+        numH = movingNumber.clientHeight;
+
+        ranges = projectEls.map((el, i) => {
+          const top = el.offsetTop;
+          const bottom = top + el.offsetHeight;
+          return { top, bottom, index: i + 1 };
+        });
+      };
+
+      const currentIndex = { v: 1 };
+      const setIndex = (i: number) => {
+        if (currentIndex.v !== i) {
+          currentIndex.v = i;
+          setActiveIndex(i);
+        }
+      };
+
+      compute();
+
+      const tween = gsap.to(movingNumber, {
+        y: () => maxY,
+        ease: "none",
+        overwrite: true,
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",
+          end: "bottom 85%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+
+          onRefreshInit: () => {
+            compute();
+          },
+
+          onRefresh: (self) => {
+            const y = self.progress * maxY;
+            const center = y + numH / 2;
+            const hit = ranges.find(
+              (r) => center >= r.top && center <= r.bottom
+            );
+            if (hit) setIndex(hit.index);
+          },
+
+          onUpdate: (self) => {
+            const y = self.progress * maxY;
+            const center = y + numH / 2;
+
+            for (let i = 0; i < ranges.length; i++) {
+              const r = ranges[i];
+              if (center >= r.top && center <= r.bottom) {
+                setIndex(r.index);
+                break;
+              }
             }
-          });
+          },
         },
-      },
-    });
+      });
 
-    const handleResize = () => {
-      ScrollTrigger.refresh();
-    };
+      const onLoad = () => ScrollTrigger.refresh();
+      window.addEventListener("load", onLoad);
+      document.fonts?.ready?.then(() => ScrollTrigger.refresh());
 
-    window.addEventListener("resize", handleResize);
+      const onResize = () => ScrollTrigger.refresh();
+      window.addEventListener("resize", onResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      anim.scrollTrigger?.kill();
-      anim.kill();
-    };
-  }, []);
+      return () => {
+        window.removeEventListener("load", onLoad);
+        window.removeEventListener("resize", onResize);
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
+    },
+    { dependencies: [] }
+  );
 
   useGSAP(() => {
     const techBlocks = gsap.utils.toArray<HTMLDivElement>(".technologie-group");
-
     techBlocks.forEach((group) => {
       const techItems = group.querySelectorAll(".technologie");
-
-      gsap.set(techItems, {
-        opacity: 0,
-        y: 50,
-      });
-
+      gsap.set(techItems, { opacity: 0, y: 50 });
       gsap.to(techItems, {
         opacity: 1,
         y: 0,
@@ -168,13 +189,18 @@ const Projects = () => {
     const cursor = cursorRef.current;
     if (!cursor) return;
 
+    const xTo = gsap.quickTo(cursor, "x", {
+      duration: 0.2,
+      ease: "power3.out",
+    });
+    const yTo = gsap.quickTo(cursor, "y", {
+      duration: 0.2,
+      ease: "power3.out",
+    });
+
     const moveCursor = (e: MouseEvent) => {
-      gsap.to(cursor, {
-        x: e.clientX - 50,
-        y: e.clientY - 50,
-        duration: 0.2,
-        ease: "power3.out",
-      });
+      xTo(e.clientX - 50);
+      yTo(e.clientY - 50);
     };
 
     window.addEventListener("mousemove", moveCursor);
@@ -222,11 +248,18 @@ const Projects = () => {
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                   >
-                    <img
+                    <Image
+                      width={918}
+                      height={487}
                       src={project.imageSrc}
                       alt="Filmera image"
                       className="rounded-2xl w-full object-contain"
                     />
+                    {/* <img
+                      src={project.imageSrc}
+                      alt="Filmera image"
+                      className="rounded-2xl w-full object-contain"
+                    /> */}
                   </a>
 
                   <div className="technologie-group flex flex-wrap gap-4">
@@ -235,7 +268,9 @@ const Projects = () => {
                         key={tech.name}
                         className="flex items-center gap-3 px-4 py-2 border rounded-xl w-fit technologie"
                       >
-                        <img
+                        <Image
+                          width={30}
+                          height={30}
                           src={tech.iconSrc}
                           alt="react"
                           className="w-[30px] h-[30px]"

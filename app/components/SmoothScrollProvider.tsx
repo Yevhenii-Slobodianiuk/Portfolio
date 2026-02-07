@@ -2,7 +2,6 @@
 import Lenis from "lenis";
 import { useEffect } from "react";
 
-// Розширюємо глобальний інтерфейс Window
 declare global {
   interface Window {
     lenis?: Lenis;
@@ -21,7 +20,6 @@ export default function SmoothScrollProvider({
       smoothWheel: true,
     });
 
-    // Додаємо глобально
     window.lenis = lenis;
 
     function raf(time: number) {

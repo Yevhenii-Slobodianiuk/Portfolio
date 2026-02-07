@@ -88,7 +88,7 @@ const Hero = () => {
         </div>
         <div>
           <p className="font-bold text-[#F9E84E] text-[clamp(3rem,10vw,10rem)] text-center uppercase">
-            frontend
+            fullstack
           </p>
           <div className="flex md:flex-row flex-col justify-between items-center gap-4">
             <p className="font-bold text-[clamp(3rem,10vw,10rem)] uppercase">
