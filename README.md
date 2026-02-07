@@ -26,4 +26,4 @@ Personal portfolio website showcasing projects, skills, and contact information.
 
    npm run dev
 
-![alt text](image.png)
+![alt text](./public/images/image.png)
