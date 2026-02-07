@@ -1,9 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Overview
 
-## Getting Started
+Personal portfolio website showcasing projects, skills, and contact information. Built as a fast, interactive single-site experience with smooth animations and 3D touches.
 
-1. Download project
-2. Install dependencies
-3. Add .env.local
-4. Add EMAIL_USER and EMAIL_USER in .env.local with your information
-5. Enjoy 😉
+## Tech Stack
+
+- Next.js for the application framework
+- Tailwind CSS for styling
+- GSAP for animations
+- Lenis for smooth scrolling
+- Three.js and React Three Fiber for 3D scenes
+- Nodemailer for contact form email delivery
+
+## Setup
+
+1. Install dependencies
+
+   npm install
+
+2. Create a `.env.local` file in the project root:
+
+   EMAIL_USER=your.email@example.com
+   EMAIL_PASS=your-app-password
+
+3. Start the dev server
+
+   npm run dev
+
+![alt text](image.png)
