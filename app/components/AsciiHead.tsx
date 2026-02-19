@@ -30,7 +30,6 @@ export default function AsciiHead() {
 
       scene = new THREE.Scene();
 
-      // Освітлення
       const light1 = new THREE.PointLight(0xffffff, 2);
       light1.position.set(1, 1, 1);
       scene.add(light1);
@@ -38,7 +37,6 @@ export default function AsciiHead() {
       const light2 = new THREE.AmbientLight(0x404040, 2);
       scene.add(light2);
 
-      // Завантаження GLTF/GLB
       const loader = new GLTFLoader();
       loader.load(
         "/3d/head.glb",
@@ -55,11 +53,9 @@ export default function AsciiHead() {
         }
       );
 
-      // Рендерер
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(width, height);
 
-      // ASCII ефект
       effect = new AsciiEffect(renderer, " .▀-+*=%@#", { invert: true });
       effect.setSize(width, height);
       effect.domElement.style.color = "white";

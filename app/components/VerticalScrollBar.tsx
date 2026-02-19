@@ -23,7 +23,7 @@ export default function VerticalScrollbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // початкове значення
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);

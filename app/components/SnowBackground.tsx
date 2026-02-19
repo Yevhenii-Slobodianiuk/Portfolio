@@ -29,7 +29,6 @@ export default function SnowBackground() {
     resize();
     window.addEventListener("resize", resize);
 
-    // --- створює одну сніжинку ---
     const createFlake = (depth: number, anywhere = true): Flake => {
       const baseSpeed = [0.1, 0.2, 0.4][depth];
       const baseSize = [1, 2, 3][depth];
@@ -59,7 +58,6 @@ export default function SnowBackground() {
       };
     };
 
-    // --- малювання ---
     const drawFlake = (flake: Flake, blur: number) => {
       ctx.beginPath();
       ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
@@ -69,14 +67,12 @@ export default function SnowBackground() {
       ctx.fill();
     };
 
-    // --- ініціалізація ---
     for (let depth = 0; depth < 3; depth++) {
       for (let i = 0; i < 50; i++) {
         layers.current[depth].push(createFlake(depth, true));
       }
     }
 
-    // --- основна анімація ---
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -89,7 +85,6 @@ export default function SnowBackground() {
         }
 
         flakeArray.forEach((flake) => {
-          // плавна поява
           if (flake.opacity < flake.targetOpacity) {
             flake.opacity += flake.fadeInSpeed;
           }
