@@ -33,6 +33,10 @@ const projects = [
         name: "VS Code",
         iconSrc: "/tech-icons/visualstudio.svg",
       },
+      {
+        name: "Material UI",
+        iconSrc: "/tech-icons/materialui.svg",
+      },
     ],
   },
   {
@@ -59,6 +63,10 @@ const projects = [
       {
         name: "VS Code",
         iconSrc: "/tech-icons/visualstudio.svg",
+      },
+      {
+        name: "Taiwind CSS",
+        iconSrc: "/tech-icons/tailwindcss.svg",
       },
     ],
   },
@@ -255,11 +263,6 @@ const Projects = () => {
                       alt="Filmera image"
                       className="rounded-2xl w-full object-contain"
                     />
-                    {/* <img
-                      src={project.imageSrc}
-                      alt="Filmera image"
-                      className="rounded-2xl w-full object-contain"
-                    /> */}
                   </a>
 
                   <div className="technologie-group flex flex-wrap gap-4">
@@ -272,7 +275,7 @@ const Projects = () => {
                           width={30}
                           height={30}
                           src={tech.iconSrc}
-                          alt="react"
+                          alt="Technology icon"
                           className="w-[30px] h-[30px]"
                         />
                         <p>{tech.name}</p>
