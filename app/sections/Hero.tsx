@@ -47,7 +47,7 @@ const Hero = () => {
                 YEVHENII SLOBODIANIUK
               </h1>
               <div className="flex items-center gap-2">
-                <p className="opacity-70 text-[clamp(1rem,2vw,1rem)] text-center md:text-start">
+                {/* <p className="opacity-70 text-[clamp(1rem,2vw,1rem)] text-center md:text-start">
                   BASED IN GERMANY
                 </p>
                 <Image
@@ -55,9 +55,9 @@ const Hero = () => {
                   alt="Location icon"
                   width={20}
                   height={10}
-                />
+                /> */}
               </div>
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
                 <a
                   href="https://github.com/Yevhenii-Slobodianiuk"
                   target="_blank"
