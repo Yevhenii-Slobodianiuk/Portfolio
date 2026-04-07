@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+
+import SmoothScrollProvider from "./components/SmoothScrollProvider";
+
 import "../styles/reset.css";
 import "./globals.css";
-import SmoothScrollProvider from "./components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: "Yevhenii Slobodianiuk | Fullstack Developer",
@@ -40,6 +43,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <Analytics />
       </body>
       <script
         type="application/ld+json"
