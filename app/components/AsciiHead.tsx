@@ -14,11 +14,22 @@ export default function AsciiHead() {
     let renderer: THREE.WebGLRenderer;
     let effect: AsciiEffect;
     let model: THREE.Object3D | null = null;
+    let animationId = 0;
+    let isVisible = true;
 
     const start = Date.now();
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) animate();
+      },
+      { threshold: 0 }
+    );
+    observer.observe(containerRef.current!);
+
     init();
-    animate();
+    // animate();
 
     function init() {
       const container = containerRef.current!;
@@ -77,17 +88,21 @@ export default function AsciiHead() {
     }
 
     function animate() {
-      requestAnimationFrame(animate);
+      if (!isVisible) return;
+      animationId = requestAnimationFrame(animate);
       const t = (Date.now() - start) * 0.001;
 
       if (model) {
         model.rotation.y = t * 1;
       }
+      console.log("Animating...");
 
       effect.render(scene, camera);
     }
 
     return () => {
+      observer.disconnect();
+      cancelAnimationFrame(animationId);
       window.removeEventListener("resize", onWindowResize);
       containerRef.current?.replaceChildren();
     };
