@@ -95,7 +95,6 @@ export default function AsciiHead() {
       if (model) {
         model.rotation.y = t * 1;
       }
-      console.log("Animating...");
 
       effect.render(scene, camera);
     }
